@@ -15,19 +15,39 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
-<h1> Schedule Content</h1>
+<h2> View Schedule</h2>
 <div class="wrap">
-    <form method="post">
-            <label for="date">Date: </label>
-            <input type="date" name="date" id="date"  required/>
+   <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Occasion</th>
+            <th>Post Title</th>
+            <th>Author</th>
+            <th>Reviewer</th>
 
-            <label for="occasion">Occasion: </label>
-            <input type="text" name="occasion" id="occasion" required />
+        </tr>
+    </thead>
+    <tbody>
+          
+                <?php 
+                global $wpdb;
+                $table_name = $wpdb->prefix. 'calender';
 
-            <label for="post_title">Post Title: </label>
-            <input type="text" name="post_title" id="post_title" required />
-
-
-            <?php submit_button( 'Schedule Post' ); ?>
-    </form>
+                $results = $wpdb->get_results("SELECT * FROM $table_name WHERE date >= DATE(NOW()) ORDER BY date");
+                foreach ($results as $result){
+                ?>
+                <tr>
+                <td><?php echo $result->id ?></td>
+                <td><?php echo $result->date ?></td>
+                <td><?php echo $result->occasion ?></td>
+                <td><?php echo $result->post_title ?></td>
+                <td><?php echo get_userdata($result->author)->user_login ?></td>
+                <td><?php echo get_userdata($result->reviewer)->user_login ?></td>
+                </tr>
+                <?php } ?>
+           
+    </tbody>
+   </table>
 </div>

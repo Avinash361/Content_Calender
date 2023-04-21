@@ -113,14 +113,42 @@ class Content_calender_Admin {
 			80
 		);
 	}
+	public function form_submission_handler(){
+		if( isset($_POST['submit'])){
+			global $wpdb;
+
+			if( isset($_POST['date']) && isset($_POST['occasion']) && isset($_POST['post_title']) && isset($_POST['author']) && isset($_POST['reviewer'])){
+				$table_name = $wpdb->prefix. 'calender';
+				$date = sanitize_text_field( $_POST['date'] );
+				$occasion = sanitize_text_field( $_POST['occasion'] );
+				$post_title = sanitize_text_field( $_POST['post_title'] );
+				$author = sanitize_text_field( $_POST['author'] );
+				$reviewer = sanitize_text_field( $_POST['reviewer'] );
+
+				$wpdb->insert(
+					$table_name,
+					array(
+						'date' => $date,
+						'occasion' => $occasion,
+						'post_title' => $post_title,
+						'author' => $author,
+						'reviewer'=> $reviewer,
+					)
+					);
+			}
+		}
+	}
+
 	function content_calendar_callback(){
 		?>
 			<h1><?php esc_html_e(get_admin_page_title()); ?></h1>
 		<?php
 		$this->schedule_content_callback();
+		$this->view_schedule_callback();
+
 	}
 	function schedule_content_callback(){
-		include('partials/content_calender-admin-display.php');
+		include('partials/content_calender-admin-schedule.php');
 
 	}
 	function view_schedule_callback(){
