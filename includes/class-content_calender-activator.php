@@ -31,6 +31,22 @@ class Content_calender_Activator {
 	 */
 	public static function activate() {
 
+		global $wpdb;
+			$table_name = $wpdb->prefix . 'calender';
+			$charset_collate = $wpdb->get_charset_collate();
+		
+			$sql = "CREATE TABLE IF NOT EXISTS $table_name (
+			  id mediumint(10) AUTO_INCREMENT,
+			  date date NOT NULL,
+			  occasion varchar(100) NOT NULL,
+			  post_title varchar(100) NOT NULL,
+			  author int(20) NOT NULL,
+			  reviewer varchar(100) NOT NULL,
+			  PRIMARY KEY  (id)
+			) $charset_collate;";
+		
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+			dbDelta($sql);
 	}
 
 }

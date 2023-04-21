@@ -14,3 +14,20 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
+
+<h1> Schedule Content</h1>
+<div class="wrap">
+    <form method="post">
+            <label for="date">Date: </label>
+            <input type="date" name="date" id="date"  required/>
+
+            <label for="occasion">Occasion: </label>
+            <input type="text" name="occasion" id="occasion" required />
+
+            <label for="post_title">Post Title: </label>
+            <input type="text" name="post_title" id="post_title" required />
+
+
+            <?php submit_button( 'Schedule Post' ); ?>
+    </form>
+</div>
