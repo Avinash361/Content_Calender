@@ -35,7 +35,7 @@
           
                 <?php 
                 global $wpdb;
-                $table_name = $wpdb->prefix. 'calender';
+                $table_name = $wpdb->prefix. 'calendar';
 
                 $results = $wpdb->get_results("SELECT * FROM $table_name WHERE date >= DATE(NOW()) ORDER BY date");
                 foreach ($results as $result){

@@ -2,6 +2,12 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+ .schedule-content input, .schedule-content select {
+    width: 20%;
+    padding: 5px;
+    margin: 8px 0px;
+ }
  .view-schedule {
     display: flex;
     justify-content: center;

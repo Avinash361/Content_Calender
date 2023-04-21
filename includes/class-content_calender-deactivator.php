@@ -30,7 +30,11 @@ class Content_calender_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+		global $wpdb, $table_prefix;
 
+		$table_name = $table_prefix. 'calendar';
+		$q = "TRUNCATE `$table_name`";
+		$wpdb->query($q);
 	}
 
 }

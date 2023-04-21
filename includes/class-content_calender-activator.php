@@ -32,7 +32,7 @@ class Content_calender_Activator {
 	public static function activate() {
 
 		global $wpdb;
-			$table_name = $wpdb->prefix . 'calender';
+			$table_name = $wpdb->prefix . 'calendar';
 			$charset_collate = $wpdb->get_charset_collate();
 		
 			$sql = "CREATE TABLE IF NOT EXISTS $table_name (

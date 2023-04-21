@@ -113,12 +113,13 @@ class Content_calender_Admin {
 			80
 		);
 	}
+
 	public function form_submission_handler(){
 		if( isset($_POST['submit'])){
 			global $wpdb;
 
 			if( isset($_POST['date']) && isset($_POST['occasion']) && isset($_POST['post_title']) && isset($_POST['author']) && isset($_POST['reviewer'])){
-				$table_name = $wpdb->prefix. 'calender';
+				$table_name = $wpdb->prefix. 'calendar';
 				$date = sanitize_text_field( $_POST['date'] );
 				$occasion = sanitize_text_field( $_POST['occasion'] );
 				$post_title = sanitize_text_field( $_POST['post_title'] );
@@ -145,16 +146,15 @@ class Content_calender_Admin {
 		<?php
 		$this->schedule_content_callback();
 		$this->view_schedule_callback();
-
 	}
+
 	function schedule_content_callback(){
 		include('partials/content_calender-admin-schedule.php');
-
 	}
+
 	function view_schedule_callback(){
 		include('partials/content_calender-admin-display.php');
-
 	}
-
-
 }
+
+

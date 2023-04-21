@@ -15,9 +15,12 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
-<h2> Schedule Content</h2>
-<div class="wrap">
+
+<div class="wrap schedule-content">
+    <h2> Schedule Content</h2>
     <form method="post">
+        <div class="row">
+            <div class="col">
             <label for="date">Date: </label>
             <input type="date" name="date" id="date"  required/>
 
@@ -26,7 +29,12 @@
 
             <label for="post_title">Post Title: </label>
             <input type="text" name="post_title" id="post_title" required />
+            
+        </div>
+        </div>
 
+        <div class="row">
+            <div class="col">
             <label for="author">Author: </label>
             <select name="author" id="author" required>
                 <?php
@@ -38,7 +46,7 @@
                 }
                 ?>
             </select>
-
+         
             <label for="reviewer">Reviewer: </label>
             <select name="reviewer" id="reviewer" required>
                 <?php
@@ -50,6 +58,8 @@
                 }
                 ?>
             </select>
+            </div>
+        </div>
 
             <?php submit_button( 'Schedule Post' ); ?>
     </form>

@@ -29,3 +29,9 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+global $wpdb, $table_prefix;
+
+		$table_name = $table_prefix. 'calendar';
+		$q = "DROP TABLE `$table_name`";
+		$wpdb->query($q);
